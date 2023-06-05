@@ -5,33 +5,32 @@
     <meta name ="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product List</title>
     <link rel="stylesheet" type="text/css" href="main.css" />
-    <script src="script.js"></script>
 </head>
 
 <body>
 <div class="container">
     <div class="rectangle1">
         <section class="firstLine">
-            <input type="text" name="addProduct" placeholder="Назва товару">
-            <button type="button" data-tooltip="Додати">Додати</button>
+            <input type="text" name="addProduct" placeholder="Назва товару" id="firstLineInput">
+            <button type="button" data-tooltip="Додати" id="addButton">Додати</button>
         </section>
         <hr>
         <section class="secondLine">
             <div class="left">
-                <input type="text" value="Помідори">
+                <input type="text" value="Помідори" id="tomatoes">
             </div>
             <div class="center">
-                <label class="amount">2</label>
+                <label class="amount" id="secondAmount">2</label>
             </div>
             <div class="right">
-                <button type="button" data-tooltip="Не куплено">Не куплено</button>
+                <button type="button" data-tooltip="Не куплено" id="secondBuyButton">Не куплено</button>
             </div>
         </section>
         <hr>
 
         <section class="thirdLine">
             <div class="left">
-                <input type="text" value="Печиво">
+                <input type="text" value="Печиво" id="cookies">
             </div>
             <div class="center">
                 <button class="button-" data-tooltip="мінус">-</button>
@@ -92,5 +91,6 @@
         <div class="badge-content-print">Created by Oleksandra Prokopchuk</div>
     </div>
 </div>
+<script src="script.js"></script>
 </body>
 </html>
