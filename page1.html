@@ -12,18 +12,21 @@
     <div class="rectangle1" id="rect1">
         <section class="firstLine">
             <input type="text" name="addProduct" placeholder="Назва товару" id="firstLineInput">
-            <button type="button" data-tooltip="Додати" id="button">Додати</button>
+            <button type="button" data-tooltip="Додати" id="addButton">Додати</button>
         </section>
         <hr>
         <section class="secondLine">
             <div class="left">
-                <input type="text" value="Помідори" id="tomatoes">
+                <input type="text" value="Помідори">
             </div>
             <div class="center">
+                <button class="buttonM" data-tooltip="мінус">-</button>
                 <label class="amount">3</label>
+                <button class="buttonP" data-tooltip="плюс">+</button>
             </div>
             <div class="right">
-                <button type="button" data-tooltip="Не куплено" id="secondLineBuyButton">Не куплено</button>
+                <button class="buttonBought" data-tooltip="куплено">Куплено</button>
+                <button class="buttonCancel" data-tooltip="скасувати">×</button>
             </div>
         </section>
         <hr>
@@ -32,9 +35,9 @@
                 <input type="text" value="Печиво">
             </div>
             <div class="center">
-                <button class="button-" data-tooltip="мінус">-</button>
+                <button class="buttonM" data-tooltip="мінус">-</button>
                 <label class="amount">3</label>
-                <button class="button+" data-tooltip="плюс">+</button>
+                <button class="buttonP" data-tooltip="плюс">+</button>
             </div>
             <div class="right">
                 <button class="buttonBought" data-tooltip="куплено">Куплено</button>
@@ -47,9 +50,9 @@
                 <input type="text" value="Сир">
             </div>
             <div class="center">
-                <button class="button-" data-tooltip="мінус">-</button>
+                <button class="buttonM" data-tooltip="мінус">-</button>
                 <label class="amount">3</label>
-                <button class="button+" data-tooltip="плюс">+</button>
+                <button class="buttonP" data-tooltip="плюс">+</button>
             </div>
             <div class="right">
                 <button class="buttonBought" data-tooltip="куплено">Куплено</button>
@@ -60,17 +63,20 @@
     </div>
 
 
-    <div class="rectangle2">
+    <div class="rectangle2" id="rect2">
         <section class="firstLine">
             <label class="phrases">Залишилося</label>
         </section>
         <hr>
         <section class="secondLine">
+            <label class="product">Помідори
+                <span class="amount">3</span>
+            </label>
             <label class="product">Печиво
-                <span class="amount">2</span>
+                <span class="amount">3</span>
             </label>
             <label class="product">Сир
-                <span class="amount">1</span>
+                <span class="amount">3</span>
             </label>
         </section>
         <hr>
@@ -80,7 +86,7 @@
         <hr>
         <section class="fourthLine">
             <label class="product">Помідори
-                <span class="amount">2</span>
+                <span class="amount">3</span>
             </label>
         </section>
     </div>
