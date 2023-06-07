@@ -8,7 +8,7 @@ body {
     margin-left: 30px;
     min-width: 450px;
 }
-@media (max-width: 600px) {
+@media (max-width: 850px) {
     .container {
         flex-direction: column;
     }
@@ -17,6 +17,9 @@ body {
         flex-grow: 1;
         margin-bottom: 10px;
         margin-right: 0;
+    }
+    .rectangle2{
+        min-width: 450px;
     }
 }
 
@@ -100,19 +103,23 @@ body {
 .rectangle1 .secondLine div,
 .rectangle1 .thirdLine div,
 .rectangle1 .fourthLine div,
-.line div{
+.line div {
     flex-grow: 1;
     flex-basis: 0;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .rectangle1 .secondLine input[type="text"],
 .rectangle1 .thirdLine input[type="text"],
 .rectangle1 .fourthLine input[type="text"],
-.line input[type="text"]{
+.line input[type="text"] {
     width: 60%;
     max-width: 100%;
     margin-right: 80px;
+    margin-left: 20px;
     font-family: "Gill Sans", sans-serif;
     font-size: 110%;
     border: none;
@@ -120,9 +127,7 @@ body {
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.rectangle1 .secondLine input[type="text"] {
-    text-decoration: line-through;
-}
+
 .rectangle1 .secondLine input[type="text"]:focus,
 .rectangle1 .thirdLine input[type="text"]:focus,
 .rectangle1 .fourthLine input[type="text"]:focus,
@@ -130,10 +135,7 @@ body {
     border: 2px solid skyblue;
     outline: none;
 }
-.rectangle1 .secondLine .amount ,
-.rectangle1 .thirdLine .amount,
-.rectangle1 .fourthLine .amount,
-.line .amount{
+.amount{
     width: 10%;
     padding: 15px;
     font-family: "Gill Sans", sans-serif;
@@ -141,13 +143,8 @@ body {
     background-color: #F0F0F0 ;
     border-radius: 5px;
 }
-.rectangle1 .secondLine button{
-    margin-left: 22%;
-}
-.rectangle1 .secondLine button,
-.rectangle1 .thirdLine .buttonBought,
-.rectangle1 .fourthLine .buttonBought,
-.line .buttonBought{
+
+.buttonBought{
     width: 60%;
     max-width: 100%;
     padding-top: 20px;
@@ -163,15 +160,30 @@ body {
     font-size: 90%;
     font-weight: bold;
 }
+.buttonNotBought {
+    width: 60%;
+    max-width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-right: 10px;
+    color: grey;
+    background-color: #F0F0F0;
+    border-color: #F0F0F0;
+    border-width: 1px;
+    border-radius: 5px;
+    box-shadow: inset 0 -5px 0 0 lightgray;
+    font-family: "Lucida Grande", sans-serif;
+    font-size: 90%;
+    font-weight: bold;
+}
 
 
-.rectangle1 .thirdLine .buttonCancel,
-.rectangle1 .fourthLine .buttonCancel,
-.line .buttonCancel{
+.buttonCancel{
     width: 20%;
     max-width: 100%;
     padding-top: 20px;
     padding-bottom: 20px;
+    margin-left: 5px;
     font-family: Lucida Grande, sans-serif;
     font-size: 90%;
     font-weight: bold;
@@ -182,12 +194,8 @@ body {
     border-radius: 5px;
     box-shadow: inset 0 -5px 0 0 darkred;
 }
-.rectangle1 .thirdLine .button-,
-.rectangle1 .thirdLine .button\+,
-.rectangle1 .fourthLine .button-,
-.rectangle1 .fourthLine .button\+,
-.line .button-,
-.line .button\+{
+.buttonM,
+.buttonP{
     width: 17%;
     max-width: 100%;
     padding-top: 5%;
@@ -196,9 +204,7 @@ body {
     font-size: 90%;
     font-weight: bold;
 }
-.rectangle1 .thirdLine .button-,
-.rectangle1 .fourthLine .button-,
-.line .button-{
+.buttonM{
     color: white;
     background-color: red;
     border-color: #F0F0F0;
@@ -206,9 +212,7 @@ body {
     border-radius: 50px;
     box-shadow: inset 0 -5px 0 0 darkred;
 }
-.rectangle1 .thirdLine .button\+,
-.rectangle1 .fourthLine .button\+,
-.line .button\+{
+.buttonP{
     color: white;
     background-color: green;
     border-color: #F0F0F0;
@@ -225,18 +229,31 @@ body {
 }
 
 .rectangle2 {
-    flex-grow: 1.9;
+    width: 40%;
+    height: 400px;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
 }
+.rectangle2  .secondLine {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+
 .rectangle2 .firstLine,
 .rectangle2 .secondLine,
 .rectangle2 .thirdLine,
-.rectangle2 .fourthLine{
-    height: calc(100% / 4);
+.rectangle2 .fourthLine {
+    flex-basis: 25%;
     display: flex;
-    align-items: center;
+    box-sizing: border-box; /* Include padding and border in the flex-basis calculation */
+    padding: 10px; /* Adjust the padding as desired */
+
 }
-.rectangle2 .firstLine .phrases,
-.rectangle2 .thirdLine .phrases {
+.phrases {
     flex-grow: 1;
     flex-basis: 0;
     font-size: 2em;
@@ -248,33 +265,14 @@ body {
     text-overflow: ellipsis;
 }
 
-@media (max-width: 768px) {
-    .rectangle2 .firstLine .phrases,
-    .rectangle2 .thirdLine .phrases{
-        font-size: 1.5em;
-    }
-}
-
-@media (max-width: 680px) {
-    .rectangle2 .firstLine .phrases,
-    .rectangle2 .thirdLine .phrases{
-        font-size: 0.8em;
-    }
-}
-@media (max-width: 600px) {
-    .rectangle2 .firstLine .phrases,
-    .rectangle2 .thirdLine .phrases{
-        font-size: 1.5em;
-    }
-}
-.rectangle2 .secondLine .product,
-.rectangle2 .fourthLine .product{
+.product{
     display: inline-flex;
     align-items: center;
     position: relative;
     padding: 5px 15px;
     margin-left: 10px;
     margin-right: 2px;
+    margin-bottom: 10px;
     background-color: lightgray;
     color: black;
     border-radius: 5px;
@@ -288,8 +286,7 @@ body {
     text-decoration: line-through;
 }
 
-.rectangle2 .secondLine .product .amount,
-.rectangle2 .fourthLine .product .amount{
+.product .amount{
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -302,55 +299,29 @@ body {
     font-size: 1em;
 }
 @media (max-width: 890px) {
-    .rectangle2 .secondLine .product,
-    .rectangle2 .fourthLine .product{
+ .product{
         font-size: 1.2em;
     }
-    .rectangle2 .secondLine .product .amount,
-    .rectangle2 .fourthLine .product .amount{
+ .product .amount{
         font-size: 1em;
     }
 }
 
 @media (max-width: 810px) {
-    .rectangle2 .secondLine .product,
-    .rectangle2 .fourthLine .product{
+ .product{
         font-size: 1em;
         width: 35%;
     }
-    .rectangle2 .secondLine .product .amount,
-    .rectangle2 .fourthLine .product .amount{
+.product .amount{
         font-size: 0.9em;
     }
 }
-@media (max-width: 750px) {
-    .rectangle2 .secondLine .product,
-    .rectangle2 .fourthLine .product{
-        font-size: 0.8em;
-        width: 30%;
-    }
-    .rectangle2 .secondLine .product .amount,
-    .rectangle2 .fourthLine .product .amount{
-        font-size: 0.9em;
-    }
-}
-@media (max-width: 680px) {
-    .rectangle2 .secondLine .product,
-    .rectangle2 .fourthLine .product{
-        font-size: 0.7em;
-    }
-    .rectangle2 .secondLine .product .amount,
-    .rectangle2 .fourthLine .product .amount{
-        font-size: 0.4em;
-    }
-}
-@media (max-width: 600px) {
-    .rectangle2 .secondLine .product,
-    .rectangle2 .fourthLine .product{
+
+@media (max-width: 770px) {
+ .product{
         font-size: 1.2em;
     }
-    .rectangle2 .secondLine .product .amount,
-    .rectangle2 .fourthLine .product .amount{
+ .product .amount{
         font-size: 1em;
     }
 }
@@ -430,37 +401,25 @@ button:hover::after {
 }
 
 @media (max-width: 650px) {
-    .rectangle1 .secondLine button,
-    .rectangle1 .thirdLine .buttonBought,
-    .rectangle1 .thirdLine .buttonCancel,
-    .rectangle1 .thirdLine .button-,
-    .rectangle1 .thirdLine .button\+,
-    .rectangle1 .fourthLine .buttonBought,
-    .rectangle1 .fourthLine .buttonCancel,
-    .rectangle1 .fourthLine .button-,
-    .rectangle1 .fourthLine .button\+{
+ .buttonBought,
+ .buttonCancel,
+ .buttonM,
+ .buttonP{
         font-size: 70% ;
     }
 }
 @media (max-width: 610px) {
-    .rectangle1 .secondLine button,
-    .rectangle1 .thirdLine .buttonBought,
-    .rectangle1 .thirdLine .buttonCancel,
-    .rectangle1 .thirdLine .button-,
-    .rectangle1 .thirdLine .button\+,
-    .rectangle1 .fourthLine .buttonBought,
-    .rectangle1 .fourthLine .buttonCancel,
-    .rectangle1 .fourthLine .button-,
-    .rectangle1 .fourthLine .button\+{
+    .buttonBought,
+    .buttonCancel,
+    .buttonM,
+    .buttonP{
         font-size: 50% ;
     }
 }
 
 @media (max-width: 600px) {
-    .rectangle1 .thirdLine .button-,
-    .rectangle1 .thirdLine .button\+,
-    .rectangle1 .fourthLine .button-,
-    .rectangle1 .fourthLine .button\+{
+    .buttonM,
+    .buttonP{
         width: 20%;
         padding: 5%;
         font-size: 90%;
@@ -468,11 +427,8 @@ button:hover::after {
     }
 }
 @media (max-width: 600px) {
-    .rectangle1 .secondLine button,
-    .rectangle1 .thirdLine .buttonBought,
-    .rectangle1 .thirdLine .buttonCancel,
-    .rectangle1 .fourthLine .buttonBought,
-    .rectangle1 .fourthLine .buttonCancel{
+     .buttonBought,
+     .buttonCancel{
         font-size: 90% ;
     }
 }
