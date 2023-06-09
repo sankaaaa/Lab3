@@ -222,4 +222,19 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+document.addEventListener('input', function(event) {
+    const input = event.target;
+    const section = input.closest('.line');
+    const productName = input.value;
+
+    const products = productList2.querySelectorAll('.product');
+    products.forEach(function(productElement) {
+        const productText = productElement.textContent;
+        if (productText.includes(productName)) {
+            const productLabel = productElement.querySelector('.amount');
+            productLabel.textContent = section.querySelector('.amount').textContent;
+        }
+    });
+});
+
 });
