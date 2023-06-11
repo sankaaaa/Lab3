@@ -17,7 +17,8 @@ function addProduct() {
     addButton.addEventListener('click', function () {
         const productName = firstLineInput.value;
         if (productName !== "") {
-            if (addedProducts.includes(productName) || defaultProducts.includes(productName)) {
+            const formattedProductName = productName.charAt(0).toUpperCase() + productName.slice(1);
+            if (addedProducts.includes(formattedProductName) || defaultProducts.includes(formattedProductName)) {
                 alert('Цей товар вже є у списку покупок.');
                 return;
             }
@@ -27,10 +28,10 @@ function addProduct() {
             newItem.classList.add('line');
             newItem.innerHTML = `
           <div class="left">
-            <input type="text" value="${productName}">
+            <input type="text" value="${formattedProductName}">
           </div>
           <div class="center">
-            <button class="buttonM" data-tooltip="мінус" disabled>-</button>
+            <button class="buttonM" data-tooltip="мінус" disabled style="background-color: #F75D59; text-shadow: 1px 1px 1px red;">-</button>
             <label class="amount">1</label>
             <button class="buttonP" data-tooltip="плюс">+</button>
           </div>
@@ -49,10 +50,10 @@ function addProduct() {
             //додати новостворений елемент в другий прямокутник
             const newItem2 = document.createElement('label');
             newItem2.classList.add('product');
-            newItem2.innerHTML = `${productName}<span class="amount">1</span>`;
+            newItem2.innerHTML = `${formattedProductName}<span class="amount">1</span>`;
             productList2.appendChild(newItem2);
 
-            addedProducts.push(productName);
+            addedProducts.push(formattedProductName);
         }
     });
 }
@@ -106,7 +107,15 @@ function deleteProduct() {
                     productAmount.textContent = amount.toString();
                 }
             });
-        }else if(event.target.classList.contains('buttonM')) {
+            if (amount > 1) {
+                minusButton.style.backgroundColor = 'red';
+                minusButton.style.textShadow = '1px 1px 1px darkred';
+            } else {
+                // Повернути оригінальний колір
+                minusButton.style.backgroundColor = '';
+                minusButton.style.textShadow = '';
+            }
+        }else if (event.target.classList.contains('buttonM')) {
             let amount = parseInt(amountLabel.textContent);
             if (amount > 1) {
                 amount--;
@@ -119,6 +128,11 @@ function deleteProduct() {
                         productAmount.textContent = amount.toString();
                     }
                 });
+            }
+
+            if (amount === 1) {
+                event.target.style.backgroundColor = '#F75D59';
+                event.target.style.textShadow = '1px 1px 1px #E55451';
             }
         }
     });
