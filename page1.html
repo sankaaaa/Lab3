@@ -17,7 +17,7 @@
         <hr>
         <section class="secondLine">
             <div class="left">
-                <input type="text" class="productInput" value="Помідори">
+                <input type="text" class="productInput" id="TomatoesInput" value="Помідори"  onclick="changeName(id, event)">
             </div>
             <div class="center">
                 <button class="buttonM" data-tooltip="мінус">-</button>
@@ -32,7 +32,7 @@
         <hr>
         <section class="thirdLine">
             <div class="left">
-                <input type="text" class="productInput" value="Печиво">
+                <input type="text" class="productInput" id="CookiesInput" value="Печиво"  onclick="changeName(id, event)">
             </div>
             <div class="center">
                 <button class="buttonM" data-tooltip="мінус">-</button>
@@ -47,7 +47,7 @@
         <hr>
         <section class="fourthLine">
             <div class="left">
-                <input type="text" class="productInput" value="Сир">
+                <input type="text" class="productInput" id="CheeseInput" value="Сир" onclick="changeName(id, event)">
             </div>
             <div class="center">
                 <button class="buttonM" data-tooltip="мінус">-</button>
@@ -69,13 +69,13 @@
         </section>
         <hr>
         <section class="secondLine">
-            <label class="product">Помідори
+            <label class="product"><label>Помідори</label>
                 <span class="amount">3</span>
             </label>
-            <label class="product">Печиво
+            <label class="product"> <label>Печиво</label>
                 <span class="amount">3</span>
             </label>
-            <label class="product">Сир
+            <label class="product"><label>Сир</label>
                 <span class="amount">3</span>
             </label>
         </section>
