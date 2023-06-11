@@ -28,7 +28,7 @@ function addProduct() {
             newItem.classList.add('line');
             newItem.innerHTML = `
           <div class="left">
-            <input type="text" value="${formattedProductName}">
+            <input id="${formattedProductName.value + "NewInput"}" type="text" onclick="changeName(id, event)" value="${formattedProductName}">
           </div>
           <div class="center">
             <button class="buttonM" data-tooltip="мінус" disabled style="background-color: #F75D59; text-shadow: 1px 1px 1px red;">-</button>
@@ -211,23 +211,58 @@ function buyProduct(){
         }
     });
 }
-function changeName() {
-    container.addEventListener('input', function(event) {
-        const section = event.target.closest('section');
-        const productName = section.querySelector('.left input').value;
-        const productList2SecondLine = document.querySelector('.rectangle2 .secondLine');
-        const products = productList2SecondLine.querySelectorAll('.product');
+function changeName(idName, event) {
+const input = document.getElementById(idName);
+const  oldName = input.value;
 
-        products.forEach(function(product) {
-            const productText = product.textContent.trim();
-
-            if (productText.includes(productName)) {
-                const amount = product.querySelector('.amount').textContent.trim();
-                product.innerHTML = productName + ' <span class="amount">' + amount + '</span>';
-            }
-        });
+input.addEventListener('keyup', function (event){
+    if(event.key==="Enter"){
+        newName(input, oldName);
+    }
     });
 }
+
+function newName(input, oldName){
+    const newName = input.value;
+
+    const rightPanel = document.querySelector('.rectangle2 .secondLine');
+    for(const rightPanelElement of rightPanel.children){
+        if(rightPanelElement.firstElementChild.textContent===oldName){
+            rightPanelElement.firstElementChild.textContent=newName;
+        }
+    }
+
+}
+
+
+
+
+
+// function changeName() {
+//     container.addEventListener('input', function (event) {
+//         const section = event.target.closest('section');
+//         const productNameInput = section.querySelector('.left input');
+//         const productName = productNameInput.value;
+//         const productList2SecondLine = document.querySelector('.rectangle2 .secondLine');
+//         const products = productList2SecondLine.querySelectorAll('.product');
+//
+//         products.forEach(function (product) {
+//             const productText = product.textContent.trim();
+//
+//             if (productText.includes(productNameInput.defaultValue)) {
+//                 const amount = product.querySelector('.amount').textContent.trim();
+//                 product.innerHTML = productName + ' <span class="amount">' + amount + '</span>';
+//             } else if (productText.includes(productName)) {
+//                 const amount = product.querySelector('.amount').textContent.trim();
+//                 product.innerHTML = productName + ' <span class="amount">' + amount + '</span>';
+//             }
+//         });
+//     });
+// }
+
+
+
+
 
 
 
