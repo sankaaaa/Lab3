@@ -50,7 +50,7 @@ function addProduct() {
             //додати новостворений елемент в другий прямокутник
             const newItem2 = document.createElement('label');
             newItem2.classList.add('product');
-            newItem2.innerHTML = `${formattedProductName}<span class="amount">1</span>`;
+            newItem2.innerHTML = `<label>${formattedProductName}</label><span class="amount">1</span>`;
             productList2.appendChild(newItem2);
 
             addedProducts.push(formattedProductName);
