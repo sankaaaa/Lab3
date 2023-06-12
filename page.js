@@ -15,30 +15,44 @@ const defaultProducts = ['Сир', 'Печиво', 'Помідори'];
 const addedProducts = [];
 function addProduct() {
     addButton.addEventListener('click', function () {
+        addNewProduct();
+    });
+
+    firstLineInput.addEventListener('keyup', function (event) {
+        if (event.key === 'Enter') {
+            addNewProduct();
+        }
+    });
+
+    function addNewProduct() {
         const productName = firstLineInput.value;
-        if (productName !== "") {
-            const formattedProductName = productName.charAt(0).toUpperCase() + productName.slice(1);
-            if (addedProducts.includes(formattedProductName) || defaultProducts.includes(formattedProductName)) {
+        if (productName !== '') {
+            const formattedProductName =
+                productName.charAt(0).toUpperCase() + productName.slice(1);
+            if (
+                addedProducts.includes(formattedProductName) ||
+                defaultProducts.includes(formattedProductName)
+            ) {
                 alert('Цей товар вже є у списку покупок.');
                 return;
             }
-            //створити новий елемент (рядок з продуктом в першому прямокутнику і лінію)
+            // Створити новий елемент (рядок з продуктом в першому прямокутнику і лінію)
             const newItem = document.createElement('section');
             const hr = document.createElement('hr');
             newItem.classList.add('line');
             newItem.innerHTML = `
-          <div class="left">
-            <input id="${formattedProductName.value + "NewInput"}" type="text" onclick="changeName(id, event)" value="${formattedProductName}">
-          </div>
-          <div class="center">
-            <button class="buttonM" data-tooltip="мінус" disabled style="background-color: #F75D59; text-shadow: 1px 1px 1px red;">-</button>
-            <label class="amount">1</label>
-            <button class="buttonP" data-tooltip="плюс">+</button>
-          </div>
-          <div class="right">
-            <button class="buttonBought" data-tooltip="куплено">Куплено</button>
-            <button class="buttonCancel" data-tooltip="скасувати">×</button>
-          </div>`;
+        <div class="left">
+          <input id="${formattedProductName.value + 'NewInput'}" type="text" onclick="changeName(id, event)" value="${formattedProductName}">
+        </div>
+        <div class="center">
+          <button class="buttonM" data-tooltip="мінус" disabled style="background-color: #F75D59; text-shadow: 1px 1px 1px red;">-</button>
+          <label class="amount">1</label>
+          <button class="buttonP" data-tooltip="плюс">+</button>
+        </div>
+        <div class="right">
+          <button class="buttonBought" data-tooltip="куплено">Куплено</button>
+          <button class="buttonCancel" data-tooltip="скасувати">×</button>
+        </div>`;
 
             productList.appendChild(newItem);
             hr.classList.add('line-hr');
@@ -47,7 +61,7 @@ function addProduct() {
             firstLineInput.value = '';
             firstLineInput.focus();
 
-            //додати новостворений елемент в другий прямокутник
+            // Додати новостворений елемент в другий прямокутник
             const newItem2 = document.createElement('label');
             newItem2.classList.add('product');
             newItem2.innerHTML = `<label>${formattedProductName}</label><span class="amount">1</span>`;
@@ -55,7 +69,7 @@ function addProduct() {
 
             addedProducts.push(formattedProductName);
         }
-    });
+    }
 }
 function deleteProduct() {
     container.addEventListener('click', function (event) {
@@ -212,53 +226,39 @@ function buyProduct(){
     });
 }
 function changeName(idName, event) {
-const input = document.getElementById(idName);
-const  oldName = input.value;
+    const input = document.getElementById(idName);
+    const oldName = input.value;
 
-input.addEventListener('keyup', function (event){
-    if(event.key==="Enter"){
-        newName(input, oldName);
-    }
+    input.addEventListener('keyup', function (event) {
+        if (event.key === "Enter") {
+            newProductName(input, oldName);
+        }
+    });
+
+    input.addEventListener('input', function (event) {
+        if (input.value.trim() === "") {
+            input.value = oldName; // Restore the previous name if the input becomes empty
+            alert("Product name cannot be empty!");
+        }
+    });
+
+    input.addEventListener('blur', function (event) {
+        newProductName(input, oldName);
     });
 }
 
-function newName(input, oldName){
+function newProductName(input, oldName) {
     const newName = input.value;
 
     const rightPanel = document.querySelector('.rectangle2 .secondLine');
-    for(const rightPanelElement of rightPanel.children){
-        if(rightPanelElement.firstElementChild.textContent===oldName){
-            rightPanelElement.firstElementChild.textContent=newName;
+    for (const rightPanelElement of rightPanel.children) {
+        if (rightPanelElement.firstElementChild.textContent === oldName) {
+            rightPanelElement.firstElementChild.textContent = newName;
         }
     }
-
 }
 
 
-
-
-
-// function changeName() {
-//     container.addEventListener('input', function (event) {
-//         const section = event.target.closest('section');
-//         const productNameInput = section.querySelector('.left input');
-//         const productName = productNameInput.value;
-//         const productList2SecondLine = document.querySelector('.rectangle2 .secondLine');
-//         const products = productList2SecondLine.querySelectorAll('.product');
-//
-//         products.forEach(function (product) {
-//             const productText = product.textContent.trim();
-//
-//             if (productText.includes(productNameInput.defaultValue)) {
-//                 const amount = product.querySelector('.amount').textContent.trim();
-//                 product.innerHTML = productName + ' <span class="amount">' + amount + '</span>';
-//             } else if (productText.includes(productName)) {
-//                 const amount = product.querySelector('.amount').textContent.trim();
-//                 product.innerHTML = productName + ' <span class="amount">' + amount + '</span>';
-//             }
-//         });
-//     });
-// }
 
 
 
